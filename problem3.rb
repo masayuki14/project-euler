@@ -17,7 +17,7 @@ def prime_numbers_from(num)
 
   # 探索リスト
   # 偶数を始めから除外しておく
-  targets = Array.new(num/2) {|i| i * 2 + 1}
+  targets = Array.new((num + 1) / 2) {|i| i * 2 + 1}
   targets.delete 1
 
   targets.each do |v|
@@ -47,7 +47,15 @@ end
 
 # 引数に渡された数の素因数分解を行い結果を配列で返す
 def find_prime_factors(num)
-  prime_numbers = prime_numbers_from(10000)
+  if num < 1
+    puts "Sorry, I can understand natural number only."
+    return
+  elsif num > 10000
+    puts "Sorry, number is so big. I don't have enough time and machine power."
+    return
+  end
+
+  prime_numbers = prime_numbers_from(num)
 
   prime_factors = Array.new
   while num != 1
